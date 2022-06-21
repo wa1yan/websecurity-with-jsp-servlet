@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	version="4.0">
+	<display-name>servlet-websecurity</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- Servlet WebSecurity configuration Start -->
+
+		<!-- security Role -->
+		<security-role>
+			<role-name>Admin</role-name>
+		</security-role>
+		<security-role>
+			<role-name>Member</role-name>
+		</security-role>
+	
+		<!-- login configuration -->
+		<login-config>
+			<auth-method>FORM</auth-method>
+			<form-login-config>
+				<form-login-page>/login.jsp</form-login-page>
+				<form-error-page>/error.jsp</form-error-page>
+			</form-login-config>
+		</login-config>
+	
+		<!-- security constraint -->
+		<security-constraint>
+			<web-resource-collection>
+				<web-resource-name>Admin</web-resource-name>
+				<url-pattern>/admin</url-pattern>
+			</web-resource-collection>
+			<auth-constraint>
+				<role-name>Admin</role-name>
+			</auth-constraint>
+		</security-constraint>
+		<security-constraint>
+			<web-resource-collection>
+				<web-resource-name>Member</web-resource-name>
+				<url-pattern>/member</url-pattern>
+			</web-resource-collection>
+			<auth-constraint>
+				<role-name>Member</role-name>
+				<role-name>Admin</role-name>
+			</auth-constraint>
+		</security-constraint>
+
+	<!-- Servlet WebSecurity configuration End -->
+</web-app>
