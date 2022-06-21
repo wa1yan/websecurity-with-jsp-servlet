@@ -17,15 +17,6 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-
-	<%
-		request.setAttribute("loginUser", request.getUserPrincipal());
-		if(null != request.getUserPrincipal()){
-			request.setAttribute("userName", request.getUserPrincipal().getName());
-			request.setAttribute("isAdmin", request.isUserInRole("Admin"));
-		}
-		
-	%>
 	
 	<div class="container mt-4">
 		<h1>Security Demo</h1>

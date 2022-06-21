@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,14 +22,15 @@
 	<h1>Member Login</h1>
 		<div class="row">
 			<div class="col-md-4">
-				<form action="j_security_check" class="form-input">
+			<c:url var="loginUrl" value="/login"></c:url>
+				<form action="${ loginUrl }" method="post" class="form-input">
 					<div class="mt-2">
 						<label for="loginId">Login Id</label>
-						<input type="text" name="j_username" id="loginId" placeholder="Enter login Id" class="form-control" />
+						<input type="text" name="username" id="loginId" placeholder="Enter login Id" class="form-control" />
 					</div>
 					<div class="mt-2">
 						<label for="pass">Password</label>
-						<input type="password" name="j_password" id="pass" placeholder="Enter password" class="form-control" />
+						<input type="password" name="password" id="pass" placeholder="Enter password" class="form-control" />
 					</div>
 					<div class="mt-2">
 						<input type="submit" value="login" class="btn btn-primary" />
