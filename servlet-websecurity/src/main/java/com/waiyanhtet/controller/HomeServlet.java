@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 		"/admin",
 		"/member"
 })
-public class LoginServlet extends HttpServlet{
+public class HomeServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	

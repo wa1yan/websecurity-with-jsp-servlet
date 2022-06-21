@@ -18,7 +18,7 @@
 <body>
 
 	<div class="container mt-4">
-	<h1>Login Page</h1>
+	<h1>Member Login</h1>
 		<div class="row">
 			<div class="col-md-4">
 				<form action="j_security_check" class="form-input">

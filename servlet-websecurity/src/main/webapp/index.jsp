@@ -17,11 +17,41 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<c:url var="memberPage" value="/member"></c:url>
-	<c:url var="adminPage" value="/admin"></c:url>
+
+	<%
+		request.setAttribute("loginUser", request.getUserPrincipal());
+		if(null != request.getUserPrincipal()){
+			request.setAttribute("userName", request.getUserPrincipal().getName());
+			request.setAttribute("isAdmin", request.isUserInRole("Admin"));
+		}
+		
+	%>
+	
 	<div class="container mt-4">
-		<a href="${ memberPage }" class="btn btn-primary">Member Page</a> <a
-			href="${ adminPage }" class="btn btn-primary">Admin Page</a>
+		<h1>Security Demo</h1>
+	
+		<c:url var="memberPage" value="/member"></c:url>
+		<c:url var="adminPage" value="/admin"></c:url>
+		<c:url var="logout" value="/logout"></c:url>
+		
+		<c:if test="${ not empty userName }">
+			<p>Welcome ${ userName }!</p>
+		</c:if>
+		
+		<c:choose>
+			<c:when test="${not empty loginUser }">
+				<a href="${ memberPage }" class="btn btn-primary">Member Page</a>
+				<c:if test="${ isAdmin }">
+					<a href="${ adminPage }" class="btn btn-primary">Admin Page</a>
+				</c:if>
+				<a href="${ logout }" class="btn btn-primary">Logout</a>
+			</c:when>
+			<c:otherwise>
+				<a href="${ memberPage }" class="btn btn-primary">Member Page</a>
+				<a href="${ adminPage }" class="btn btn-primary">Admin Page</a>
+			</c:otherwise>
+		</c:choose>		
+		
 	</div>
 
 </body>
